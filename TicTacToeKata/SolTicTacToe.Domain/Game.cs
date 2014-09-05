@@ -26,13 +26,13 @@ namespace SolTicTacToe.Domain
 
     public class Coordinate
     {
-        private int _x { get; set; }
-        public int _y { get; set; }
+        public int X { get; private set; }
+        public int Y { get; private set; }
 
         public Coordinate(int x, int y)
         {
-            _x = x;
-            _y = y;
+            X = x;
+            Y = y;
         }
     }
 }
