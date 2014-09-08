@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeKata", "TicTacToeKata\TicTacToeKata.csproj", "{306C986E-A6C8-4E9F-A092-4776941D775D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolTicTacToe.Domain", "SolTicTacToe.Domain\SolTicTacToe.Domain.csproj", "{5CEA94BA-05FC-4001-982E-4A8D02B25DCE}"

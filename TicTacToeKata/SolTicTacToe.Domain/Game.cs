@@ -6,33 +6,43 @@ using System.Threading.Tasks;
 
 namespace SolTicTacToe.Domain
 {
-    public class Game : ITicTacToe
-    {
-        public Coordinate MakeMove(Board CurrentBoard)
-        {
-            throw new NotImplementedException();
-        }
-    }
+	//public class Game : ITicTacToe
+	//{
+	//	public Coordinate MakeMove(Board currentBoard, string markToMake)
+	//	{
+	//		throw new NotImplementedException();
+	//	}
+	//}
 
-    public interface ITicTacToe
-    {
-        Coordinate MakeMove(Board CurrentBoard);
-    }
+	public interface ITicTacToe
+	{
+		Coordinate MakeMove(Board currentBoard, string markToMake);
+	}
 
-    public class Board
-    {
-        public Dictionary<Coordinate, string> CurrentBoard { get; set; }
-    }
+	public class Board
+	{
+		public Board()
+		{
+			Moves = new Dictionary<string, string>();
+		}
 
-    public class Coordinate
-    {
-        public int X { get; private set; }
-        public int Y { get; private set; }
+		public Dictionary<string, string> Moves { get; set; }
+	}
 
-        public Coordinate(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
-    }
+	public class Coordinate
+	{
+		public int X { get; private set; }
+		public int Y { get; private set; }
+
+		public Coordinate(int x, int y)
+		{
+			X = x;
+			Y = y;
+		}
+
+		public string Key
+		{
+			get { return string.Format("{0},{1}", X, Y); }
+		}
+	}
 }
