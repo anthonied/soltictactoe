@@ -1,5 +1,0 @@
-C:\Development\Kata\Tic Tac Toe\TicTacToeKata\SolTicTacToe.Domain\obj\Debug\SolTicTacToe.Domain.csprojResolveAssemblyReference.cache
-C:\Development\Kata\Tic Tac Toe\TicTacToeKata\SolTicTacToe.Domain\bin\Debug\SolTicTacToe.Domain.dll
-C:\Development\Kata\Tic Tac Toe\TicTacToeKata\SolTicTacToe.Domain\bin\Debug\SolTicTacToe.Domain.pdb
-C:\Development\Kata\Tic Tac Toe\TicTacToeKata\SolTicTacToe.Domain\obj\Debug\SolTicTacToe.Domain.dll
-C:\Development\Kata\Tic Tac Toe\TicTacToeKata\SolTicTacToe.Domain\obj\Debug\SolTicTacToe.Domain.pdb
