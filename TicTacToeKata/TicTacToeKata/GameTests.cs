@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 
 namespace TicTacToeKata
@@ -62,7 +64,7 @@ namespace TicTacToeKata
         }
 
 
-        [Test, Ignore]
+        [Test]
         public void GivenAMoveAt1_0_BoardShouldMakeMoveNextToIt()
         {
             var board = new Game();
@@ -70,7 +72,7 @@ namespace TicTacToeKata
             board.MakeMove(new Point(1, 0));
 
             Assert.That(board.GetStateAt(new Point(0, 1)), Is.EqualTo(""));
-            Assert.That(board.GetStateAt(new Point(1, 1)), Is.EqualTo("o"));
+            Assert.That(board.GetStateAt(new Point(1, 0)), Is.EqualTo("x"));
 
         }
 
@@ -107,11 +109,11 @@ namespace TicTacToeKata
 
         public string GetStateAt(Point point)
         {
-            return Board[point];
+            return Board[Board.First(board => board.Key.EqualsPoint(point)).Key];
         }
     }
 
-    public class Point  
+    public class Point
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -120,6 +122,16 @@ namespace TicTacToeKata
         {
             X = x;
             Y = y;
+        }
+        
+        public bool EqualsPoint(Point x)
+        {
+            return (x.X == X && x.Y == Y);
+        }
+
+        public int GetHashCode(object obj)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
