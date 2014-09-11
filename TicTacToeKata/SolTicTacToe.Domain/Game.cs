@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CoordinateKey = System.String;
+using Mark = System.String;
 
 namespace SolTicTacToe.Domain
 {
@@ -23,10 +25,10 @@ namespace SolTicTacToe.Domain
 	{
 		public Board()
 		{
-			Moves = new Dictionary<string, string>();
+			Moves = new Dictionary<CoordinateKey, Mark>();
 		}
-
-		public Dictionary<string, string> Moves { get; set; }
+       
+        public Dictionary<CoordinateKey, Mark> Moves { get; set; }
 	}
 
 	public class Coordinate
@@ -40,7 +42,7 @@ namespace SolTicTacToe.Domain
 			Y = y;
 		}
 
-		public string Key
+        public CoordinateKey Key
 		{
 			get { return string.Format("{0},{1}", X, Y); }
 		}

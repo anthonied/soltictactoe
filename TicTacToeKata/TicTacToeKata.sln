@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeKata", "TicTacToeKata\TicTacToeKata.csproj", "{306C986E-A6C8-4E9F-A092-4776941D775D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolTicTacToe.Domain", "SolTicTacToe.Domain\SolTicTacToe.Domain.csproj", "{5CEA94BA-05FC-4001-982E-4A8D02B25DCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameMatcher", "GameMatcher\GameMatcher.csproj", "{55876E74-24E8-49FC-A6ED-484EFDF9473E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +23,10 @@ Global
 		{5CEA94BA-05FC-4001-982E-4A8D02B25DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CEA94BA-05FC-4001-982E-4A8D02B25DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CEA94BA-05FC-4001-982E-4A8D02B25DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55876E74-24E8-49FC-A6ED-484EFDF9473E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55876E74-24E8-49FC-A6ED-484EFDF9473E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55876E74-24E8-49FC-A6ED-484EFDF9473E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55876E74-24E8-49FC-A6ED-484EFDF9473E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
