@@ -1,0 +1,45 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Multigame";
+  
+}
+
+<br/>
+<br/>
+<div id="multiBattleDiv">
+    <div class="col-md-12">
+        <span class="col-md-2">Games</span>
+        <span class="col-md-offset-1" data-bind="text: games"></span>
+    </div>
+    <div class="col-md-12">
+        <span class="col-md-2">X - Wins</span>
+        <span class="col-md-offset-1" data-bind="text: xWins"></span>
+    </div>
+    <div class="col-md-12">
+        <span class="col-md-2">O - Wins</span>
+        <span class="col-md-offset-1" data-bind="text: oWins"></span>
+    </div>
+    <div class="col-md-12">
+        <span class="col-md-2">Draws</span>
+        <span class="col-md-offset-1" data-bind="text: draws"></span>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var model = @Html.Raw(Json.Encode(Model))
+
+
+        var GameViewModel = function() {
+            var self = this;
+            self.games = model.Games;
+            self.xWins = model.Xwins;
+            self.oWins = model.Owins;
+            self.draws = model.Draws;
+
+        }
+
+        var vm = new GameViewModel();
+        ko.applyBindings(vm, document.getElementById('multiBattleDiv'));
+    </script>
+}

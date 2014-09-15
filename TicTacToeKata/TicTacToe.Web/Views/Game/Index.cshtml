@@ -1,5 +1,5 @@
 ﻿@model dynamic
-<Br /><Br />
+<br /><br />
 <div id="battleDiv">
     <table>
         <tbody>
@@ -19,10 +19,31 @@
                 <td height="200px" style="width: 200px; text-align: center"> <h1 data-bind="text: board[8]"></h1></td>
             </tr>
         </tbody>
-        
+
     </table>
-    <br/>
-    <button class="btn btn-info" onclick="beginGame()">Begin Game</button>
+    <br />
+    <br />
+    <div class="col-md-12">
+        <span class="col-md-2">Games</span>
+        <span class="col-md-offset-1" data-bind="text: games"></span>
+    </div>
+    <div class="col-md-12">
+        <span class="col-md-2">X - Wins</span>
+        <span class="col-md-offset-1" data-bind="text: xWins"></span>
+    </div>
+    <div class="col-md-12">
+        <span class="col-md-2">O - Wins</span>
+        <span class="col-md-offset-1" data-bind="text: oWins"></span>
+    </div>
+    <div class="col-md-12">
+        <span class="col-md-2">Draws</span>
+        <span class="col-md-offset-1" data-bind="text: draws"></span>
+    </div>
+    <br />
+    <button class="btn btn-info" onclick="beginGame()">
+        Next Game
+    </button>
+    <button class="btn btn-warning" onclick="resetGame()">Reset</button>
 
 </div>
 
@@ -34,21 +55,28 @@
         var GameViewModel = function() {
             var self = this;
             self.board = model.Board;
-            
+            self.games = model.Games;
+            self.xWins = model.Xwins;
+            self.oWins = model.Owins;
+            self.draws = model.Draws;
 
         }
+
         var vm = new GameViewModel();
         ko.applyBindings(vm, document.getElementById('battleDiv'));
 
         var beginGame = function() {
-            console.log("ASDDSFA");
-            document.location = "Game/Index";
+            document.location = "../Game/Index";
         }
 
-        
-        
+        var resetGame = function() {
+            document.location = "../Game/Reset";
+        }
 
-        
+
+
+
+
 
     </script>
 }

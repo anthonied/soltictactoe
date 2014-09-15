@@ -39,8 +39,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ElsTicTacToeTests">
-      <HintPath>..\..\packages\ElsTicTacToeTests.dll</HintPath>
+    <Reference Include="Elsi">
+      <HintPath>..\..\packages\Elsi.dll</HintPath>
     </Reference>
     <Reference Include="jhhwilliams">
       <HintPath>..\..\packages\jhhwilliams.dll</HintPath>
@@ -227,6 +227,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Game\MultiGame.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
