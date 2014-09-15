@@ -1,0 +1,54 @@
+﻿@model dynamic
+<Br /><Br />
+<div id="battleDiv">
+    <table>
+        <tbody>
+            <tr>
+                <td height="200px" style="border-right:black 5px solid; width: 200px; border-bottom:black 5px solid; text-align: center"> <h1 data-bind="text: board[0]"></h1></td>
+                <td height="200px" style="border-right:black 5px solid; width: 200px; border-bottom:black 5px solid; text-align: center"> <h1 data-bind="text: board[1]"></h1></td>
+                <td height="200px" style=" border-bottom: black 5px solid; width: 200px; text-align: center"> <h1 data-bind="text: board[2]"></h1></td>
+            </tr>
+            <tr>
+                <td height="200px" style="border-right:black 5px solid; width: 200px; border-bottom:black 5px solid; text-align: center"> <h1 data-bind="text: board[3]"></h1></td>
+                <td height="200px" style="border-right:black 5px solid; width: 200px; border-bottom:black 5px solid; text-align: center"> <h1 data-bind="text: board[4]"></h1></td>
+                <td height="200px" style=" border-bottom: black 5px solid; width: 200px; text-align: center"> <h1 data-bind="text: board[5]"></h1></td>
+            </tr>
+            <tr>
+                <td height="200px" style="border-right:black 5px solid; width: 200px; text-align: center"> <h1 data-bind="text: board[6]"></h1></td>
+                <td height="200px" style="border-right:black 5px solid; width: 200px;  text-align: center"> <h1 data-bind="text: board[7]"></h1></td>
+                <td height="200px" style="width: 200px; text-align: center"> <h1 data-bind="text: board[8]"></h1></td>
+            </tr>
+        </tbody>
+        
+    </table>
+    <br/>
+    <button class="btn btn-info" onclick="beginGame()">Begin Game</button>
+
+</div>
+
+@section Scripts{
+    <script>
+        var model = @Html.Raw(Json.Encode(Model))
+
+
+        var GameViewModel = function() {
+            var self = this;
+            self.board = model.Board;
+            
+
+        }
+        var vm = new GameViewModel();
+        ko.applyBindings(vm, document.getElementById('battleDiv'));
+
+        var beginGame = function() {
+            console.log("ASDDSFA");
+            document.location = "Game/Index";
+        }
+
+        
+        
+
+        
+
+    </script>
+}
