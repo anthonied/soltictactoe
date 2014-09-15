@@ -34,10 +34,11 @@ namespace SolTicTacToe.Domain
             return state;
         }
 
+		public List<Coordinate> MovesInOrder = new List<Coordinate>();
 
         public void ApplyMove(Coordinate moveCoordinate, Board board, Mark markToMake)
         {
-
+			
             var isLegit = CheckMoveIsLegit(board, moveCoordinate);
 
             if (!isLegit)
@@ -47,7 +48,7 @@ namespace SolTicTacToe.Domain
             }
 
             board.Moves[moveCoordinate.Key] = markToMake;
-
+			MovesInOrder.Add(moveCoordinate);
         }
 
 

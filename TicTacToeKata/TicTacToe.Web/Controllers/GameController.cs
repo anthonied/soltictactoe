@@ -1,6 +1,8 @@
 ﻿using jhhwilliams;
 using SolTicTacToe.Domain;
 using System.Web.Mvc;
+using System.Collections.Generic;
+using System;
 
 namespace TicTacToe.Web.Controllers
 {
@@ -32,6 +34,8 @@ namespace TicTacToe.Web.Controllers
             model.Xwins = (int)Session["X"];
             model.Owins = (int)Session["O"];
             model.Draws = (int)Session["Draws"];
+
+			model.MovesInOrder = game.MovesInOrder;
             return View(model);
         }
 
@@ -70,19 +74,24 @@ namespace TicTacToe.Web.Controllers
             return View(model);
         }
 
-        private void playGame(Game game, Board board)
+		private Board cloneBoard(Board board)
+		{
+			return new Board { Moves = new Dictionary<string, string>(board.Moves) };
+		}
+
+		private void playGame(Game game, Board board)
         {
-            var p2 = new JhTttGame();
-            var p1 = new TicTacToeQgame.TicTacToeQ { Level =  4};
+			var p1 = new JhTttGame();
+            var p2 = new TicTacToeQgame.TicTacToeQ { Level = 3 };
 
             while (game.State == GameState.InProgress || game.State == GameState.NotStarted)
             {
-                var nextMoveX = p1.MakeMove(board, "X");
+				var nextMoveX = p1.MakeMove(cloneBoard(board), "X");
                 game.ApplyMove(nextMoveX, board, "X");
                 game.State = game.CheckBoardState(board);
                 if (game.State != GameState.InProgress)
                     break;
-                var nextMoveY = p2.MakeMove(board, "O");
+				var nextMoveY = p2.MakeMove(cloneBoard(board), "O");
                 game.ApplyMove(nextMoveY, board, "O");
                 game.State = game.CheckBoardState(board);
             }
@@ -143,5 +152,7 @@ namespace TicTacToe.Web.Controllers
         public string Player1 { get; set; }
 
         public string Player2 { get; set; }
+
+		public List<Coordinate> MovesInOrder { get; set; }
     }
 }

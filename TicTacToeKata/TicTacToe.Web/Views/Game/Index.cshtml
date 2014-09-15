@@ -4,19 +4,19 @@
     <table>
         <tbody>
             <tr>
-                <td height="200px" style="border-right:black 5px solid; width: 200px; border-bottom:black 5px solid; text-align: center"> <h1 data-bind="text: board[0]"></h1></td>
-                <td height="200px" style="border-right:black 5px solid; width: 200px; border-bottom:black 5px solid; text-align: center"> <h1 data-bind="text: board[1]"></h1></td>
-                <td height="200px" style=" border-bottom: black 5px solid; width: 200px; text-align: center"> <h1 data-bind="text: board[2]"></h1></td>
+                <td height="200px" style="border-right:black 5px solid; width: 200px; border-bottom:black 5px solid; text-align: center"> <h1 data-bind="text: board[0], visible: hasBeenPlayed('0,0')"></h1></td>
+                <td height="200px" style="border-right:black 5px solid; width: 200px; border-bottom:black 5px solid; text-align: center"> <h1 data-bind="text: board[1], visible: hasBeenPlayed('1,0')"></h1></td>
+                <td height="200px" style=" border-bottom: black 5px solid; width: 200px; text-align: center"> <h1 data-bind="text: board[2], visible: hasBeenPlayed('2,0')"></h1></td>
             </tr>
             <tr>
-                <td height="200px" style="border-right:black 5px solid; width: 200px; border-bottom:black 5px solid; text-align: center"> <h1 data-bind="text: board[3]"></h1></td>
-                <td height="200px" style="border-right:black 5px solid; width: 200px; border-bottom:black 5px solid; text-align: center"> <h1 data-bind="text: board[4]"></h1></td>
-                <td height="200px" style=" border-bottom: black 5px solid; width: 200px; text-align: center"> <h1 data-bind="text: board[5]"></h1></td>
+                <td height="200px" style="border-right:black 5px solid; width: 200px; border-bottom:black 5px solid; text-align: center"> <h1 data-bind="text: board[3], visible: hasBeenPlayed('0,1')"></h1></td>
+                <td height="200px" style="border-right:black 5px solid; width: 200px; border-bottom:black 5px solid; text-align: center"> <h1 data-bind="text: board[4], visible: hasBeenPlayed('1,1')"></h1></td>
+                <td height="200px" style=" border-bottom: black 5px solid; width: 200px; text-align: center"> <h1 data-bind="text: board[5], visible: hasBeenPlayed('2,1')"></h1></td>
             </tr>
             <tr>
-                <td height="200px" style="border-right:black 5px solid; width: 200px; text-align: center"> <h1 data-bind="text: board[6]"></h1></td>
-                <td height="200px" style="border-right:black 5px solid; width: 200px;  text-align: center"> <h1 data-bind="text: board[7]"></h1></td>
-                <td height="200px" style="width: 200px; text-align: center"> <h1 data-bind="text: board[8]"></h1></td>
+                <td height="200px" style="border-right:black 5px solid; width: 200px; text-align: center"> <h1 data-bind="text: board[6], visible: hasBeenPlayed('0,2')"></h1></td>
+                <td height="200px" style="border-right:black 5px solid; width: 200px;  text-align: center"> <h1 data-bind="text: board[7], visible: hasBeenPlayed('1,2')"></h1></td>
+                <td height="200px" style="width: 200px; text-align: center"> <h1 data-bind="text: board[8], visible: hasBeenPlayed('2,2')"></h1></td>
             </tr>
         </tbody>
 
@@ -40,19 +40,17 @@
         <span class="col-md-offset-1" data-bind="text: draws"></span>
     </div>
     <br />
-    <button class="btn btn-info" onclick="beginGame()">
-        Next Game
-    </button>
+    <button class="btn btn-info" onclick="beginGame()">Next Game</button>
     <button class="btn btn-warning" onclick="resetGame()">Reset</button>
-
+    <button class="btn btn-default" data-bind="click: playGame">Show moves again, slower</button>
 </div>
 
 @section Scripts{
     <script>
-        var model = @Html.Raw(Json.Encode(Model))
-
-
-        var GameViewModel = function() {
+        var model = @Html.Raw(Json.Encode(Model));
+		
+        var GameViewModel = function()
+        {
             var self = this;
             self.board = model.Board;
             self.games = model.Games;
@@ -60,6 +58,36 @@
             self.oWins = model.Owins;
             self.draws = model.Draws;
 
+            self.playedKeys = ko.observableArray();
+
+            self.hasBeenPlayed = function(key)
+            {
+            	return self.playedKeys.indexOf(key) >= 0;
+            }
+
+            self.moveCounter = 0;
+            self.timerId = null;
+            self.speed = 0;
+				
+            self.playGame = function()
+            {
+            	self.playedKeys([]);
+            	self.moveCounter = 0;
+            	self.speed += 150;
+
+            	self.timerId = setInterval(function()
+            	{
+            		self.playedKeys.push(model.MovesInOrder[self.moveCounter].Key);
+
+            		self.moveCounter++;
+            		if (self.moveCounter < model.MovesInOrder.length)
+            			return;
+
+            		clearInterval(self.timerId);
+            	}, self.speed);
+            }
+
+            self.playGame();
         }
 
         var vm = new GameViewModel();
