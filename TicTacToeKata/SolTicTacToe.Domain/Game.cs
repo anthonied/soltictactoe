@@ -100,6 +100,11 @@ namespace SolTicTacToe.Domain
         {
             return newMove.X >= 0;
         }
+
+        public Mark TicTacTag
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 
 

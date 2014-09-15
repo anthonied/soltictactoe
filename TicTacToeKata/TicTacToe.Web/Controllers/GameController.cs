@@ -13,8 +13,8 @@ namespace TicTacToe.Web.Controllers
         {
             var game = new Game();
             var board = new Board();
-            var p1 = new TttGame();
-            var p2 = new TicTacToeGame();
+            var p1 = new TicTacToeQgame.TicTacToeQ();
+            var p2 = new TicTacToeQgame.TicTacToeQ();
 
             while (game.State == GameState.InProgress || game.State == GameState.NotStarted)
             {
@@ -23,12 +23,12 @@ namespace TicTacToe.Web.Controllers
                 game.State = game.CheckBoardState(board);
                 if (game.State != GameState.InProgress)
                     break;
-                var nextMoveY = p1.MakeMove(board, "O");
+                var nextMoveY = p2.MakeMove(board, "O");
                 game.ApplyMove(nextMoveY, board, "O");
                 game.State = game.CheckBoardState(board);
             }
 
-
+             
 
             var model = new GameModel {Board = new string[9]};
             model.Board[0] = board.Moves.ContainsKey("0,0") ? board.Moves["0,0"] : "";
