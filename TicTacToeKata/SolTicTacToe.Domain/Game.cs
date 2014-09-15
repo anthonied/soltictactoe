@@ -15,6 +15,7 @@ namespace SolTicTacToe.Domain
 
     public interface ITicTacToe
     {
+		string TicTacTag { get; }
 		Coordinate MakeMove(Board currentBoard, Mark markToMake);
     }
 
