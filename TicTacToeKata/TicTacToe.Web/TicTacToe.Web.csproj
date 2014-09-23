@@ -39,13 +39,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Elsi">
-      <HintPath>..\..\packages\Elsi.dll</HintPath>
+    <Reference Include="Elsi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Players\Els\Elsi.dll</HintPath>
     </Reference>
-    <Reference Include="jhhwilliams">
-      <HintPath>..\..\packages\jhhwilliams.dll</HintPath>
+    <Reference Include="jhhwilliams, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Players\Janhendrik\jhhwilliams.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Morpheus">
+      <HintPath>..\..\Players\Phillip\Morpheus.dll</HintPath>
+    </Reference>
+    <Reference Include="MyTickTackToe">
+      <HintPath>..\..\Players\Brendin\MyTickTackToe.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -103,8 +111,15 @@
       <Private>True</Private>
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="TicTacToeQgame">
-      <HintPath>..\..\packages\TicTacToeQgame.dll</HintPath>
+    <Reference Include="TicTacJoe">
+      <HintPath>..\..\Players\Riaan\TicTacJoe.dll</HintPath>
+    </Reference>
+    <Reference Include="TicTacToeQgame, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Players\Gerhard\TicTacToeQgame.dll</HintPath>
+    </Reference>
+    <Reference Include="TicTacToeSukkel">
+      <HintPath>..\..\Players\Drilene\TicTacToeSukkel.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
